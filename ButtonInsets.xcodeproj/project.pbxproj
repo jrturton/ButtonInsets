@@ -17,10 +17,15 @@
 		6097A1FA16EBC9E4009432F2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6097A1F916EBC9E4009432F2 /* Default@2x.png */; };
 		6097A1FC16EBC9E4009432F2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6097A1FB16EBC9E4009432F2 /* Default-568h@2x.png */; };
 		6097A1FF16EBC9E4009432F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6097A1FE16EBC9E4009432F2 /* ViewController.m */; };
-		6097A20216EBC9E4009432F2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6097A20016EBC9E4009432F2 /* ViewController.xib */; };
+		6097A20C16EBCCD1009432F2 /* InsetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6097A20B16EBCA8C009432F2 /* InsetEditor.m */; };
+		6097A20D16EBCD34009432F2 /* command.png in Resources */ = {isa = PBXBuildFile; fileRef = 6097A20816EBCA8C009432F2 /* command.png */; };
+		6097A20E16EBCD34009432F2 /* command@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6097A20916EBCA8C009432F2 /* command@2x.png */; };
+		A5399187583F4F5D805768D5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E09D85108394B4EA6E734DF /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30F55FA1A3D5406D885CADEA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		3E09D85108394B4EA6E734DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6097A1E216EBC9E4009432F2 /* ButtonInsets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonInsets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6097A1E516EBC9E4009432F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6097A1E716EBC9E4009432F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -36,7 +41,10 @@
 		6097A1FB16EBC9E4009432F2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		6097A1FD16EBC9E4009432F2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6097A1FE16EBC9E4009432F2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6097A20116EBC9E4009432F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		6097A20816EBCA8C009432F2 /* command.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = command.png; sourceTree = "<group>"; };
+		6097A20916EBCA8C009432F2 /* command@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "command@2x.png"; sourceTree = "<group>"; };
+		6097A20A16EBCA8C009432F2 /* InsetEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsetEditor.h; sourceTree = "<group>"; };
+		6097A20B16EBCA8C009432F2 /* InsetEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsetEditor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 				6097A1E616EBC9E4009432F2 /* UIKit.framework in Frameworks */,
 				6097A1E816EBC9E4009432F2 /* Foundation.framework in Frameworks */,
 				6097A1EA16EBC9E4009432F2 /* CoreGraphics.framework in Frameworks */,
+				A5399187583F4F5D805768D5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +68,7 @@
 				6097A1EB16EBC9E4009432F2 /* ButtonInsets */,
 				6097A1E416EBC9E4009432F2 /* Frameworks */,
 				6097A1E316EBC9E4009432F2 /* Products */,
+				30F55FA1A3D5406D885CADEA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +86,7 @@
 				6097A1E516EBC9E4009432F2 /* UIKit.framework */,
 				6097A1E716EBC9E4009432F2 /* Foundation.framework */,
 				6097A1E916EBC9E4009432F2 /* CoreGraphics.framework */,
+				3E09D85108394B4EA6E734DF /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -87,7 +98,8 @@
 				6097A1F516EBC9E4009432F2 /* AppDelegate.m */,
 				6097A1FD16EBC9E4009432F2 /* ViewController.h */,
 				6097A1FE16EBC9E4009432F2 /* ViewController.m */,
-				6097A20016EBC9E4009432F2 /* ViewController.xib */,
+				6097A20A16EBCA8C009432F2 /* InsetEditor.h */,
+				6097A20B16EBCA8C009432F2 /* InsetEditor.m */,
 				6097A1EC16EBC9E4009432F2 /* Supporting Files */,
 			);
 			path = ButtonInsets;
@@ -103,6 +115,8 @@
 				6097A1F716EBC9E4009432F2 /* Default.png */,
 				6097A1F916EBC9E4009432F2 /* Default@2x.png */,
 				6097A1FB16EBC9E4009432F2 /* Default-568h@2x.png */,
+				6097A20816EBCA8C009432F2 /* command.png */,
+				6097A20916EBCA8C009432F2 /* command@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -117,6 +131,7 @@
 				6097A1DE16EBC9E4009432F2 /* Sources */,
 				6097A1DF16EBC9E4009432F2 /* Frameworks */,
 				6097A1E016EBC9E4009432F2 /* Resources */,
+				AD6B0D4F193942EC9FDC5718 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,15 +173,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6097A20D16EBCD34009432F2 /* command.png in Resources */,
+				6097A20E16EBCD34009432F2 /* command@2x.png in Resources */,
 				6097A1F016EBC9E4009432F2 /* InfoPlist.strings in Resources */,
 				6097A1F816EBC9E4009432F2 /* Default.png in Resources */,
 				6097A1FA16EBC9E4009432F2 /* Default@2x.png in Resources */,
 				6097A1FC16EBC9E4009432F2 /* Default-568h@2x.png in Resources */,
-				6097A20216EBC9E4009432F2 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD6B0D4F193942EC9FDC5718 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6097A1DE16EBC9E4009432F2 /* Sources */ = {
@@ -176,6 +209,7 @@
 				6097A1F216EBC9E4009432F2 /* main.m in Sources */,
 				6097A1F616EBC9E4009432F2 /* AppDelegate.m in Sources */,
 				6097A1FF16EBC9E4009432F2 /* ViewController.m in Sources */,
+				6097A20C16EBCCD1009432F2 /* InsetEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,14 +222,6 @@
 				6097A1EF16EBC9E4009432F2 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		6097A20016EBC9E4009432F2 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6097A20116EBC9E4009432F2 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -261,6 +287,7 @@
 		};
 		6097A20616EBC9E4009432F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30F55FA1A3D5406D885CADEA /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ButtonInsets/ButtonInsets-Prefix.pch";
@@ -272,6 +299,7 @@
 		};
 		6097A20716EBC9E4009432F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30F55FA1A3D5406D885CADEA /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ButtonInsets/ButtonInsets-Prefix.pch";
@@ -300,6 +328,7 @@
 				6097A20716EBC9E4009432F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
