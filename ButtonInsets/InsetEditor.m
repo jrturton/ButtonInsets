@@ -26,14 +26,6 @@
         titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:titleLabel];
         
-        [RACAble(self.title) subscribeNext:^(NSString *newTitle) {
-            titleLabel.text = newTitle;
-        }];
-        
-        [RACAble(self.color) subscribeNext:^(UIColor *newColor) {
-            titleLabel.textColor = newColor;
-        }];
-        
         // Value labels and steppers
         
         UILabel *topLabel = [UILabel new];
@@ -77,8 +69,18 @@
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[titleLabel]-[topStepper]-[leftStepper]-[bottomStepper]-[rightStepper]-|" options:NSLayoutFormatAlignAllRight metrics:nil views:views]];
         
-        // Controls
+        // Reactive cocoa bindings
         
+        // This binds the text and colour of the title label to the title and colour properties, meaning we don't have to override the setters and don't need to keep the title label as a property.
+        [RACAble(self.title) subscribeNext:^(NSString *newTitle) {
+            titleLabel.text = newTitle;
+        }];
+        
+        [RACAble(self.color) subscribeNext:^(UIColor *newColor) {
+            titleLabel.textColor = newColor;
+        }];
+        
+        // This binds the values of each stepper and label to the appropriate part of the insets property.
         [RACAble(self.insets) subscribeNext:^(id x) {
             UIEdgeInsets newInsets = [x UIEdgeInsetsValue];
             topLabel.text = [NSString stringWithFormat:@"Top: %.0f",newInsets.top];
@@ -91,21 +93,18 @@
             rightStepper.value = newInsets.right;
         }];
         
+        // This updates the insets when any of the steppers are changed. We have to use startWith: because until a signal has been received from each component, combineLatest will not fire. 
         __weak typeof(self) weakSelf = self;
         RAC(self.insets) = [RACSignal combineLatest:@[
-          [[topStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:topStepper],
-          [[leftStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:leftStepper],
-          [[bottomStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:bottomStepper],
-          [[rightStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:rightStepper]
+          [[topStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil],
+          [[leftStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil],
+          [[bottomStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil],
+          [[rightStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil]
           ] reduce:^(UIStepper *top, UIStepper *left, UIStepper *bottom, UIStepper *right) {
               [weakSelf sendActionsForControlEvents:UIControlEventValueChanged];
               return [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(top.value, left.value, bottom.value, right.value)];
           }];
-        
-//        // Need to send a control event for each stepper so that the signal becomes active.
-//        for (UIControl *control in @[topStepper,leftStepper,bottomStepper,rightStepper])
-//            [control sendActionsForControlEvents:UIControlEventValueChanged];
-        
+                
     }
     return self;
 }
