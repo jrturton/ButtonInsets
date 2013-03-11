@@ -7,7 +7,30 @@
 //
 
 #import "InsetEditor.h"
+
+#ifdef USE_RAC
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
+
+#else
+
+@interface InsetEditor()
+
+@property (nonatomic,strong) UILabel *titleLabel;
+
+@property (nonatomic,strong) UILabel *topLabel;
+@property (nonatomic,strong) UILabel *leftLabel;
+@property (nonatomic,strong) UILabel *bottomLabel;
+@property (nonatomic,strong) UILabel *rightLabel;
+
+@property (nonatomic,strong) UIStepper *topStepper;
+@property (nonatomic,strong) UIStepper *leftStepper;
+@property (nonatomic,strong) UIStepper *bottomStepper;
+@property (nonatomic,strong) UIStepper *rightStepper;
+
+@end
+
+#endif
 
 @implementation InsetEditor
 
@@ -54,6 +77,9 @@
                 UIStepper *stepper = (UIStepper*)subview;
                 stepper.minimumValue = -HUGE_VAL;
                 stepper.maximumValue = HUGE_VAL;
+#ifndef USE_RAC
+                [stepper addTarget:self action:@selector(stepperChanged:) forControlEvents:UIControlEventValueChanged];
+#endif
             }
         }
         
@@ -68,7 +94,8 @@
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[rightLabel]->=0-[rightStepper]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[titleLabel]-[topStepper]-[leftStepper]-[bottomStepper]-[rightStepper]-|" options:NSLayoutFormatAlignAllRight metrics:nil views:views]];
-        
+
+#ifdef USE_RAC
         // Reactive cocoa bindings
         
         // This binds the text and colour of the title label to the title and colour properties, meaning we don't have to override the setters and don't need to keep the title label as a property.
@@ -104,10 +131,57 @@
               [weakSelf sendActionsForControlEvents:UIControlEventValueChanged];
               return [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(top.value, left.value, bottom.value, right.value)];
           }];
-                
+#else
+        
+        // We need to set all the properties up
+        _titleLabel = titleLabel;
+        _topLabel = topLabel;
+        _leftLabel = leftLabel;
+        _bottomLabel = bottomLabel;
+        _rightLabel = rightLabel;
+        
+        _topStepper = topStepper;
+        _leftStepper = leftStepper;
+        _bottomStepper = bottomStepper;
+        _rightStepper = rightStepper;
+        
+#endif
+        
     }
     return self;
 }
 
+#ifndef USE_RAC
+
+// These are all the bindings and methods that using RAC replaces
+
+-(void)setColor:(UIColor *)color
+{
+    _color = color;
+    self.titleLabel.textColor = color;
+}
+
+-(void)setTitle:(NSString *)title
+{
+    _title = title;
+    self.titleLabel.text = title;
+}
+
+-(void)stepperChanged:(UIStepper*)sender
+{
+    self.insets = UIEdgeInsetsMake(self.topStepper.value, self.leftStepper.value, self.bottomStepper.value, self.rightStepper.value);
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+-(void)setInsets:(UIEdgeInsets)insets
+{
+    _insets = insets;
+    self.topLabel.text = [NSString stringWithFormat:@"Top: %.0f",insets.top];
+    self.leftLabel.text = [NSString stringWithFormat:@"Left: %.0f",insets.left];
+    self.bottomLabel.text = [NSString stringWithFormat:@"Bottom: %.0f",insets.bottom];
+    self.rightLabel.text = [NSString stringWithFormat:@"Right: %.0f",insets.right];
+}
+
+#endif
 
 @end

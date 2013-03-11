@@ -12,3 +12,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+// Comment or uncomment this line to use the RAC functionality.
+//#define USE_RAC
