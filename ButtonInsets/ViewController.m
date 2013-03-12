@@ -77,9 +77,14 @@
         subview.translatesAutoresizingMaskIntoConstraints = NO;
 #ifndef USE_RAC
         [subview addTarget:self action:@selector(insetsEdited:) forControlEvents:UIControlEventValueChanged];
-#endif
     }
-    
+    self.contentInsetEditor = contentInsetEditor;
+    self.imageInsetEditor = imageInsetEditor;
+    self.titleInsetEditor = titleInsetEditor;
+#else
+    }
+#endif
+
     NSDictionary *views = NSDictionaryOfVariableBindings(contentInsetEditor,imageInsetEditor,titleInsetEditor);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentInsetEditor]" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[contentInsetEditor(==imageInsetEditor)]-[imageInsetEditor(==titleInsetEditor)]-[titleInsetEditor]-|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
@@ -137,9 +142,6 @@
     }];
     
 #else
-    self.contentInsetEditor = contentInsetEditor;
-    self.imageInsetEditor = imageInsetEditor;
-    self.titleInsetEditor = titleInsetEditor;
     self.buttonFrameLabel = buttonFrameLabel;
     self.titleFrameLabel = titleFrameLabel;
     self.imageFrameLabel = imageFrameLabel;
