@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "InsetEditor.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage+Color.h"
 
 #ifdef USE_RAC
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -189,6 +190,8 @@
     [button setTitle:@"Button title" forState:UIControlStateNormal];
     
     [button setImage:[UIImage imageNamed:@"command"] forState:UIControlStateNormal];
+
+    [button setBackgroundImage:[UIImage imageWithColor:[UIColor yellowColor]] forState:UIControlStateNormal];
     
     self.contentInsetEditor.insets = button.contentEdgeInsets;
     self.imageInsetEditor.insets = button.imageEdgeInsets;
