@@ -21,6 +21,7 @@
 		6097A20D16EBCD34009432F2 /* command.png in Resources */ = {isa = PBXBuildFile; fileRef = 6097A20816EBCA8C009432F2 /* command.png */; };
 		6097A20E16EBCD34009432F2 /* command@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6097A20916EBCA8C009432F2 /* command@2x.png */; };
 		A5399187583F4F5D805768D5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E09D85108394B4EA6E734DF /* libPods.a */; };
+		C4B047B2187D19B90087B492 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B047B1187D19B90087B492 /* UIImage+Color.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		6097A20916EBCA8C009432F2 /* command@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "command@2x.png"; sourceTree = "<group>"; };
 		6097A20A16EBCA8C009432F2 /* InsetEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsetEditor.h; sourceTree = "<group>"; };
 		6097A20B16EBCA8C009432F2 /* InsetEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsetEditor.m; sourceTree = "<group>"; };
+		C4B047B0187D19B90087B492 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		C4B047B1187D19B90087B492 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				6097A1FE16EBC9E4009432F2 /* ViewController.m */,
 				6097A20A16EBCA8C009432F2 /* InsetEditor.h */,
 				6097A20B16EBCA8C009432F2 /* InsetEditor.m */,
+				C4B047B0187D19B90087B492 /* UIImage+Color.h */,
+				C4B047B1187D19B90087B492 /* UIImage+Color.m */,
 				6097A1EC16EBC9E4009432F2 /* Supporting Files */,
 			);
 			path = ButtonInsets;
@@ -208,6 +213,7 @@
 			files = (
 				6097A1F216EBC9E4009432F2 /* main.m in Sources */,
 				6097A1F616EBC9E4009432F2 /* AppDelegate.m in Sources */,
+				C4B047B2187D19B90087B492 /* UIImage+Color.m in Sources */,
 				6097A1FF16EBC9E4009432F2 /* ViewController.m in Sources */,
 				6097A20C16EBCCD1009432F2 /* InsetEditor.m in Sources */,
 			);
