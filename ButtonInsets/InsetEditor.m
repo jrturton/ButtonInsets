@@ -180,6 +180,11 @@
     self.leftLabel.text = [NSString stringWithFormat:@"Left: %.0f",insets.left];
     self.bottomLabel.text = [NSString stringWithFormat:@"Bottom: %.0f",insets.bottom];
     self.rightLabel.text = [NSString stringWithFormat:@"Right: %.0f",insets.right];
+    
+    self.topStepper.value = insets.top;
+    self.leftStepper.value = insets.left;
+    self.bottomStepper.value = insets.bottom;
+    self.rightStepper.value = insets.right;
 }
 
 #endif

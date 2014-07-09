@@ -179,6 +179,9 @@
     self.demoButton.contentEdgeInsets = UIEdgeInsetsZero;
     self.demoButton.imageEdgeInsets = UIEdgeInsetsZero;
     self.demoButton.titleEdgeInsets = UIEdgeInsetsZero;
+    self.contentInsetEditor.insets = UIEdgeInsetsZero;
+    self.imageInsetEditor.insets = UIEdgeInsetsZero;
+    self.titleInsetEditor.insets = UIEdgeInsetsZero;
 }
 
 -(UIButton*)createDemoButton
