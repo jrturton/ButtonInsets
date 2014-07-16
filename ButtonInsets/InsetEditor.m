@@ -99,16 +99,16 @@
         // Reactive cocoa bindings
         
         // This binds the text and colour of the title label to the title and colour properties, meaning we don't have to override the setters and don't need to keep the title label as a property.
-        [RACAble(self.title) subscribeNext:^(NSString *newTitle) {
+        [RACObserve(self, title) subscribeNext:^(NSString *newTitle) {
             titleLabel.text = newTitle;
         }];
         
-        [RACAble(self.color) subscribeNext:^(UIColor *newColor) {
+        [RACObserve(self, color) subscribeNext:^(UIColor *newColor) {
             titleLabel.textColor = newColor;
         }];
         
         // This binds the values of each stepper and label to the appropriate part of the insets property.
-        [RACAble(self.insets) subscribeNext:^(id x) {
+        [RACObserve(self, insets) subscribeNext:^(id x) {
             UIEdgeInsets newInsets = [x UIEdgeInsetsValue];
             topLabel.text = [NSString stringWithFormat:@"Top: %.0f",newInsets.top];
             topStepper.value = newInsets.top;
@@ -122,7 +122,7 @@
         
         // This updates the insets when any of the steppers are changed. We have to use startWith: because until a signal has been received from each component, combineLatest will not fire. 
         __weak typeof(self) weakSelf = self;
-        RAC(self.insets) = [RACSignal combineLatest:@[
+        RAC(self, insets) = [RACSignal combineLatest:@[
           [[topStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil],
           [[leftStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil],
           [[bottomStepper rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil],
