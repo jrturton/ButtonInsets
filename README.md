@@ -15,3 +15,5 @@ To enable Reactive Cocoa, you need to install it via Cocoapods to the project (t
 The non-reactive cocoa code is still in the project; you can see the difference by examining which code is included in the various `#ifdef` blocks.
 
 If you don't want to use Reactive Cocoa or cocoapods then you'll need to amend the project to remove all of the podification. Though you really ought to be using Cocapods!
+
+Known issue: When using reactive cocoa, the reset button doesn't reset the state for each editor. If you know how to fix this, pull requests are very welcome!
