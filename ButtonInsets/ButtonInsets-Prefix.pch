@@ -14,4 +14,4 @@
 #endif
 
 // Comment or uncomment this line to use the RAC functionality.
-//#define USE_RAC
+#define USE_RAC

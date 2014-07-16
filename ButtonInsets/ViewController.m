@@ -116,28 +116,28 @@
     
 #ifdef USE_RAC
     
-    RAC(self.demoButton.contentEdgeInsets) = [RACSignal combineLatest:@[[[contentInsetEditor rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil]] reduce:^(InsetEditor *editor){
+    RAC(self, demoButton.contentEdgeInsets) = [RACSignal combineLatest:@[[[contentInsetEditor rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil]] reduce:^(InsetEditor *editor){
         return [NSValue valueWithUIEdgeInsets:editor.insets];
     }];
     
-    RAC(self.demoButton.imageEdgeInsets) = [RACSignal combineLatest:@[[[imageInsetEditor rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil]] reduce:^(InsetEditor *editor){
+    RAC(self, demoButton.imageEdgeInsets) = [RACSignal combineLatest:@[[[imageInsetEditor rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil]] reduce:^(InsetEditor *editor){
         return [NSValue valueWithUIEdgeInsets:editor.insets];
     }];
     
-    RAC(self.demoButton.titleEdgeInsets) = [RACSignal combineLatest:@[[[titleInsetEditor rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil]] reduce:^(InsetEditor *editor){
+    RAC(self, demoButton.titleEdgeInsets) = [RACSignal combineLatest:@[[[titleInsetEditor rac_signalForControlEvents:UIControlEventValueChanged] startWith:nil]] reduce:^(InsetEditor *editor){
         return [NSValue valueWithUIEdgeInsets:editor.insets];
     }];
     
     
-    [RACAble(self.demoButton.contentEdgeInsets) subscribeNext:^(NSValue *contentEdgeInsetsValue) {
+    [RACObserve(self, demoButton.contentEdgeInsets) subscribeNext:^(NSValue *contentEdgeInsetsValue) {
         buttonFrameLabel.text = descriptionOfFrame(self.demoButton.frame);
     }];
     
-    [RACAble(self.demoButton.titleEdgeInsets) subscribeNext:^(NSValue *titleEdgeInsetsValue) {
+    [RACObserve(self, demoButton.titleEdgeInsets) subscribeNext:^(NSValue *titleEdgeInsetsValue) {
         titleFrameLabel.text = descriptionOfFrame(self.demoButton.titleLabel.frame);
     }];
     
-    [RACAble(self.demoButton.imageEdgeInsets) subscribeNext:^(NSValue *imageEdgeInsetsValue) {
+    [RACObserve(self, demoButton.imageEdgeInsets) subscribeNext:^(NSValue *imageEdgeInsetsValue) {
         imageFrameLabel.text = descriptionOfFrame(self.demoButton.imageView.frame);
     }];
     
@@ -169,16 +169,13 @@
 
 -(void)resetButton
 {
-#ifdef USE_RAC
-    // I couldn't work out how to trigger the change even if the insets don't change (e.g. in the initial case, or if the insets for a particular item don't change.
-    UIEdgeInsets temp = UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0);
-    self.demoButton.contentEdgeInsets = temp;
-    self.demoButton.imageEdgeInsets = temp;
-    self.demoButton.titleEdgeInsets = temp;
-#endif
+    //TODO: This does not reset the editors when using RAC.
     self.demoButton.contentEdgeInsets = UIEdgeInsetsZero;
     self.demoButton.imageEdgeInsets = UIEdgeInsetsZero;
     self.demoButton.titleEdgeInsets = UIEdgeInsetsZero;
+    self.contentInsetEditor.insets = UIEdgeInsetsZero;
+    self.imageInsetEditor.insets = UIEdgeInsetsZero;
+    self.titleInsetEditor.insets = UIEdgeInsetsZero;
 }
 
 -(UIButton*)createDemoButton
